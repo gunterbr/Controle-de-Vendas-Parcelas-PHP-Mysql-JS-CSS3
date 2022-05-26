@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <script src='https://code.jquery.com/jquery-3.5.0.js'></script>
+        <link rel='stylesheet' href='css/style.css'>
+        <title>Batista Variedades</title>
+    </head>
+    <body>
+        <span class='chatbot'>
+            <span class='chatbot__loading'></span>
+            <span class='chatbot__loading'></span>
+            <span class='chatbot__loading'></span>
+        </span>
+        <header class='header-wrapper'>
+            <span class='header'>
+                <span class='checkbox-container'>
+                    <span class='checkbox-wrapper'>
+                        <input type='checkbox' id='toggle'>
+                        <label class='checkbox' for='toggle'>
+                            <span class='trace'></span>
+                            <span class='trace'></span>
+                            <span class='trace'></span>
+                        </label>
+                        <span class='menu'></span>
+                        <span class='menu-items'>
+                            <span class='contato-social list parcelado'>
+                                <label>CLIENTE:
+                                    <input type='text' readonly >
+                                </label>
+                                <label>Receber parcela nº:
+                                    <select id='receber-parcela'>
+                                        <option value='1'>1ª</option>
+                                        <option value='2'>2ª</option>
+                                        <option value='3'>3ª</option>
+                                        <option value='4'>4ª</option>
+                                        <option value='5'>5ª</option>
+                                        <option value='6'>6ª</option>
+                                        <option value='7'>7ª</option>
+                                        <option value='8'>8ª</option>
+                                        <option value='9'>9ª</option>
+                                        <option value='10'>10ª</option>
+                                        <option value='11'>11ª</option>
+                                        <option value='12'>12ª</option>
+                                    </select>
+                                </label>
+                                <label>R$:
+                                    <input type='tel' onkeyup='reais(this)' autocomplete='off' maxlength='9' value='0,00' >
+                                </label>
+                                <label>Valor da dívida:
+                                    <input type='tel' class='a-receber' readonly >
+                                </label>
+                            </span>
+                            <input type='checkbox' id='um-more' class='hidden'>
+                            <label class='more' id='um' for='um-more' onclick='growDiv(this)'>
+                                <span class='trace'></span>
+                                <span class='trace'></span>
+                            </label>
+                            <div class='um more-info'>
+                                <div class='um info'>
+                                    <label>CPF:
+                                        <input value ='000.000.000-00' readonly >
+                                    </label>
+                                </div>
+                            </div>
+                            <span class='contato-social list recebido'>
+                                <label>CLIENTE:
+                                    <input type='text' readonly >
+                                </label>
+                                <label>Produto:
+                                    <input type='text' readonly >
+                                </label>
+                                <label>Total R$:
+                                    <input type='tel' class='total-recebido' readonly >
+                                </label>
+                            </span>
+                            <input type='checkbox' id='dois-more' class='hidden'>
+                            <label class='more' id='dois' for='dois-more' onclick='growDiv(this)'>
+                                <span class='trace'></span>
+                                <span class='trace'></span>
+                            </label>
+                            <div class='dois more-info'>
+                                <div class='dois info'>
+                                    <label>CPF:
+                                        <input value ='000.000.000-00' readonly >
+                                    </label>
+                                </div>
+                            </div>
+                        </span>
+                    </span>
+                </span>
+            </span>
+            <span class='autor'>
+                <h1>Batista Variedades</h1>
+                <h2>Vendas à Vista/Prazo</h2>
+            </span>
+            <span class='contato-social master'>
+                <label>CLIENTE:
+                    <input type='text' id='name' class='name' autocomplete='off' autofocus >
+                </label>
+                <label>CPF:
+                    <input type='tel' id='cpf' class='cpf' onkeypress='cpf()' autocomplete='off' size='14' maxlength='14' >
+                </label>
+                <label>Doc nº:
+                    <input type='text' id='docn' class='docn' autocomplete='off' size='14' >
+                </label>
+            </span>
+            <span class='contato-social silver'>
+                <label>Preço:
+                    <input type='tel' id='preco' class='total' onkeyup='reais(this)' autocomplete='off' size='9' maxlength='9' value='0,00' >
+                </label>
+                <label>Recebido à Vista:
+                    <input type='tel' id='avista' class='avista' onkeyup='reais(this)' autocomplete='off' size='9' maxlength='9' value='0,00' >
+                </label>
+                <label>Parcelar em:
+                    <select id='parcela' class='parcela'>
+                        <option value='0'>0x</option>
+                        <option value='1'>1x</option>
+                        <option value='2'>2x</option>
+                        <option value='3'>3x</option>
+                        <option value='4'>4x</option>
+                        <option value='5'>5x</option>
+                        <option value='6'>6x</option>
+                        <option value='7'>7x</option>
+                        <option value='8'>8x</option>
+                        <option value='9'>9x</option>
+                        <option value='10'>10x</option>
+                        <option value='11'>11x</option>
+                        <option value='12'>12x</option>
+                    </select>
+                </label>
+                <label>De:
+                    <input type='tel' id='aprazo' class='aprazo' onkeyup='reais(this)' autocomplete='off' size='9' maxlength='9' value='0,00' readonly >
+                </label>
+                <label>Balança:
+                    <p id='total' class='total'>0,00</p>
+                </label>
+                <label>Produto:
+                    <input type='text' id='item' class='item' >
+                </label>
+            </span>
+        </header>
+        <footer class='footer'>
+            <h2>Recebidos</h2>
+        </footer>
+<script src='js/script.js'></script>
+    </body>
+</html>
