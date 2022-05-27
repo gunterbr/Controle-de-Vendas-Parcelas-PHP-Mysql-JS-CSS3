@@ -1,6 +1,7 @@
 <?php
     $db = 'controledevendas';
-    $tabela = 'batistavariedades';//Altere para o nome da sua loja e seja feliz :)
+    //$tabela = 'batista';
+    //A Tabela é obtida após o login. Verifique o usuario e senha padrao em home.php
 
     $conexao = new mysqli("localhost","root","");
     $create_db = "CREATE DATABASE IF NOT EXISTS $db CHARACTER SET utf8 COLLATE utf8_general_ci";

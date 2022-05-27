@@ -1,3 +1,6 @@
+<?php
+include_once('verifica_login.php');
+?>
 <!DOCTYPE html>
 <html lang='pt-br'>
     <head>
@@ -5,7 +8,7 @@
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <script src='https://code.jquery.com/jquery-3.5.0.js'></script>
         <link rel='stylesheet' href='css/style.css'>
-        <title>Batista Variedades</title>
+        <title><?php echo $MeuNegocio;?></title>
     </head>
     <body>
         <span class='chatbot'>
@@ -14,6 +17,39 @@
             <span class='chatbot__loading'></span>
         </span>
         <header class='header-wrapper'>
+
+<?php
+if($user == 'admin') {
+    $habilitar = $conexao->query("SELECT * FROM `users` WHERE `active`='0' ORDER BY active ASC, id DESC");
+    
+    if(mysqli_num_rows($habilitar) > 0) {
+        while($linha = $habilitar->fetch_assoc()) {
+            echo "
+            <label>Nome: <input value='".$linha['nome']."' readonly></label>
+            <label>usuário: <input value='".$linha['username']."' readonly></label>
+            <label>e-mail: <input value='".$linha['email']."' readonly></label>
+            <label>cadastro: <input value='".$linha['cadastro']."' readonly></label>
+            
+            <form action='habilitar.php' method='POST'>
+                <input type='hidden' name='id' value='".$linha['id']."' >
+                <label><input type='submit' class='habilitar' value='habilitar' ></label>
+            </form>
+            <br>";
+        }
+    } else {
+        echo 'Nenhum usuário pendente!';
+    }
+}
+?>
+
+        <label class='logout'>
+            <a href='logout.php'>< sair</a>
+        </label>
+
+<?php
+
+    if(!empty($tabela)) {
+        echo "
             <span class='header'>
                 <span class='checkbox-container'>
                     <span class='checkbox-wrapper'>
@@ -25,7 +61,7 @@
                         </label>
                         <span class='menu'></span>
                         <span class='menu-items'>
-<?php
+        ";
 
     include_once('conectDB.php');
 
@@ -265,16 +301,16 @@
                 ";
         }
     }
-?>
-                        </span>
+echo "
+                        </span><!--Fim menu-items-->
                     </span>
                 </span>
             </span>
             <span class='autor'>
-                <h1>Batista Variedades</h1>
+                <h1>".$MeuNegocio."</h1>
                 <h2>Vendas à Vista/Prazo</h2>
             </span>
-            <input type='hidden' id='loja' value='<?php echo $tabela?>' >
+            <input type='hidden' id='loja' value='".$tabela."' >
             <span class='contato-social master'>
                 <label>CLIENTE:
                     <input type='text' id='cliente' class='cliente' autocomplete='off' autofocus >
@@ -323,6 +359,10 @@
                     <input type='submit' id='vender' value='vender' >
                 </label>
             </span>
+";
+}
+?>
+
         </header>
         <footer class='footer'>
             <h2>Em breve, mais novidades!</h2>
