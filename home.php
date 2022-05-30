@@ -70,11 +70,10 @@ echo "
     ) ENGINE=MyISAM ;
     ";
     $user_default = "
-    INSERT INTO users VALUES (NULL, NULL, 'Loja do Adm', 'admin', sha1('froiden'), 'admin@admin.com.br', 1, 1,'S', NOW( ));
-    INSERT INTO users VALUES (NULL, NULL, 'Loja 2', 'user', sha1('user123'), 'user@user.com.br', 2, 0,'N', NOW( ));
+    INSERT INTO users VALUES (NULL, '', 'Loja do Adm', 'admin', sha1('froiden'), 'admin@admin.com.br', 1, 1,'S', NOW( ));
     ";
     mysqli_query($conexao, $sql_users);
-    mysqli_multi_query($conexao, $user_default);
+    mysqli_query($conexao, $user_default);
     echo "<meta http-equiv=\"refresh\" content=\"0;URL=home.php?msg=new-table-users\">";
 }
 echo "
